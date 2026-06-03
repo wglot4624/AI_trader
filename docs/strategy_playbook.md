@@ -76,16 +76,29 @@ Max position = 50% of account
 | Max trades per week | 5 round trips |
 
 ## Watchlist
-| Symbol | Name | Setups | Notes |
-|--------|------|--------|-------|
-| SPY | S&P 500 ETF | Regime only | Barometer, rarely trade |
-| QQQ | Nasdaq-100 ETF | A, B | Tech proxy |
-| AAPL | Apple | A, B | Liquid, clean EMA behavior |
-| MSFT | Microsoft | A, B | Strong trend instrument |
-| NVDA | Nvidia | B only | High ATR — use extra caution |
-| AMD | AMD | All | Lower price than NVDA |
-| JPM | JPMorgan | C | Mean reversion candidate |
-| XLE | Energy ETF | C | Sector diversity |
+| Symbol | Name | Sector | Setups | Notes |
+|--------|------|--------|--------|-------|
+| SPY | S&P 500 ETF | Regime | Regime only | Barometer |
+| QQQ | Nasdaq-100 ETF | Regime | Regime only | Tech barometer |
+| IWM | Russell 2000 ETF | Regime | Regime only | Breadth signal |
+| AAPL | Apple | Tech | A, B | Liquid, clean EMA behavior |
+| MSFT | Microsoft | Tech | A, B | Strong trend instrument |
+| NVDA | Nvidia | Tech | B only | High ATR — extra caution |
+| AMD | AMD | Tech | All | Lower price than NVDA |
+| GOOGL | Alphabet | Tech/Comm | A, B | Stable large cap |
+| META | Meta | Tech/Comm | A, B | Strong momentum |
+| AMZN | Amazon | Consumer/Tech | A, B | Liquid, EMA responsive |
+| TSLA | Tesla | Consumer | B only | High ATR — extra caution |
+| HD | Home Depot | Consumer | A, C | Steady trend, mean reversion |
+| JPM | JPMorgan | Financials | C | Mean reversion candidate |
+| GS | Goldman Sachs | Financials | A, B | Trend following |
+| BAC | Bank of America | Financials | C | Lower price point |
+| LLY | Eli Lilly | Healthcare | A, B | Strong trend |
+| UNH | UnitedHealth | Healthcare | A, C | Defensive, mean reversion |
+| CAT | Caterpillar | Industrials | A, B | Cyclical trend |
+| XLE | Energy Sector ETF | Energy | C | Sector ETF |
+| CVX | Chevron | Energy | A, C | Less volatile than XLE |
+| GLD | Gold ETF | Macro | C | Macro hedge, mean reversion |
 
 ## Changelog
 | Date | Change | Reason |

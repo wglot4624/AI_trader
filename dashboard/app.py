@@ -12,11 +12,32 @@ from datetime import datetime
 from pathlib import Path
 
 from flask import Flask, jsonify, render_template_string
+from flask.json.provider import DefaultJSONProvider
+import math
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 ROOT = Path(__file__).parent.parent
+
+
+class NaNSafeJSONProvider(DefaultJSONProvider):
+    """Replace NaN/Infinity with null so the browser doesn't choke."""
+    def dumps(self, obj, **kwargs):
+        import json as _json
+        def clean(o):
+            if isinstance(o, float) and (math.isnan(o) or math.isinf(o)):
+                return None
+            if isinstance(o, dict):
+                return {k: clean(v) for k, v in o.items()}
+            if isinstance(o, list):
+                return [clean(i) for i in o]
+            return o
+        return _json.dumps(clean(obj), **kwargs)
+
+
 app = Flask(__name__)
+app.json_provider_class = NaNSafeJSONProvider
+app.json = NaNSafeJSONProvider(app)
 
 
 def load_json(filename: str) -> dict | list:

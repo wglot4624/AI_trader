@@ -23,7 +23,24 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(message)s",
 )
 
-WATCHLIST = ["SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMD", "JPM", "XLE"]
+WATCHLIST = [
+    # Regime barometers
+    "SPY", "QQQ", "IWM",
+    # Technology
+    "AAPL", "MSFT", "NVDA", "AMD", "GOOGL", "META",
+    # Consumer
+    "AMZN", "TSLA", "HD",
+    # Financials
+    "JPM", "GS", "BAC",
+    # Healthcare
+    "LLY", "UNH",
+    # Industrials
+    "CAT",
+    # Energy
+    "XLE", "CVX",
+    # Macro / Alternatives
+    "GLD",
+]
 
 ECONOMIC_EVENTS = [
     # Manually maintained — update weekly
@@ -206,9 +223,10 @@ def enrich_positions(positions: list, stops: dict, indicators: dict) -> list:
 
 def build_watchlist_entries(indicators: dict, regime: dict) -> list:
     entries = []
+    REGIME_ONLY = {"SPY", "QQQ", "IWM"}  # barometers, not trade candidates
     for symbol in WATCHLIST:
-        if symbol == "SPY":
-            continue  # SPY is regime barometer, not a trade candidate at this scale
+        if symbol in REGIME_ONLY:
+            continue
         ind = indicators.get(symbol, {})
         if "error" in ind:
             continue
@@ -275,6 +293,8 @@ def main():
                 spy.get("high_52wk", spy.get("price", 1)) * 100, 2
             ) if spy.get("high_52wk") else None,
             "vix": vix,
+            "qqq_rsi": indicators.get("QQQ", {}).get("rsi_14"),
+            "iwm_rsi": indicators.get("IWM", {}).get("rsi_14"),
             "setups_active": regime["setups_active"],
         },
 

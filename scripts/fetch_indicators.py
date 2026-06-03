@@ -27,7 +27,24 @@ logging.basicConfig(
 AV_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 AV_BASE = "https://www.alphavantage.co/query"
 
-WATCHLIST = ["SPY", "QQQ", "AAPL", "MSFT", "NVDA", "AMD", "JPM", "XLE"]
+WATCHLIST = [
+    # Regime barometers
+    "SPY", "QQQ", "IWM",
+    # Technology
+    "AAPL", "MSFT", "NVDA", "AMD", "GOOGL", "META",
+    # Consumer
+    "AMZN", "TSLA", "HD",
+    # Financials
+    "JPM", "GS", "BAC",
+    # Healthcare
+    "LLY", "UNH",
+    # Industrials
+    "CAT",
+    # Energy
+    "XLE", "CVX",
+    # Macro / Alternatives
+    "GLD",
+]
 
 
 def fetch_daily_ohlcv(symbol: str) -> pd.DataFrame:
