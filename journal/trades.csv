@@ -1,0 +1,1 @@
+trade_id,symbol,setup_type,entry_date,exit_date,entry_price,exit_price,shares,stop_price,target_price,exit_reason,gross_pnl,r_multiple,confluence_score,regime_at_entry,agent_confidence,human_approved,agent_bull_case,agent_bear_case,post_trade_notes

@@ -1,0 +1,26 @@
+# Secrets — never commit
+.env
+.env.txt
+.env.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Generated data — local only
+data/indicators_cache.json
+data/morning_context.json
+data/trading_proposal.json
+data/midday_report.json
+data/eod_report.json
+data/risk_state.json
+data/positions_state.json
+
+# Logs
+logs/*.log
+
+# macOS
+.DS_Store
