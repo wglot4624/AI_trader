@@ -2,6 +2,7 @@
 .env
 .env.txt
 .env.local
+.env.example.txt
 
 # Python
 .venv/
